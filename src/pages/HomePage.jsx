@@ -1,13 +1,13 @@
 import React from "react";
+import CocktailCard from "../components/Nav/CocktailCard/CocktailCard";
 import { allCocktails } from "../data";
+import "../App.css";
 
 function HomePage() {
     return (
-        <div>
+        <div id="cocktail-list">
             {allCocktails.map((cocktailData, key) => {
-                return <div key={key}>{cocktailData.name}
-                    <img src={cocktailData.image} alt="cocktail" />
-                </div>
+                return <CocktailCard key={key} cocktailData={cocktailData} />;
             })}
         </div>
     )
