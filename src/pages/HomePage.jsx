@@ -1,5 +1,5 @@
 import React from "react";
-import CocktailCard from "../components/CocktailCard/CocktailCard";
+import CocktailCard from "../components/CocktailCard";
 import { allCocktails } from "../data";
 
 
