@@ -13,7 +13,7 @@ function App() {
         <Nav />
         <Routes >
           <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/cocktails" element={<CocktailPage />} />
+          <Route exact path="/cocktails/:id" element={<CocktailPage />} />
         </Routes>
       </div>
       <Footer />

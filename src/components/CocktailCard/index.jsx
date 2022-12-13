@@ -6,7 +6,7 @@ function CocktailCard(props) {
     const { cocktailData } = props;
     return (
         <div className="cocktail-card">
-            <Link to="/cocktail">
+            <Link to={`/cocktails/${cocktailData.id}`}>
                 <img src={cocktailData.image} />
                 <h3>{cocktailData.name}</h3>
             </Link>
