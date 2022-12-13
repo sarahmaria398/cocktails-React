@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 function CocktailPage() {
@@ -13,6 +13,8 @@ function CocktailPage() {
     }, []);
 
     return (
+
+
         <div id="cocktail-page">
             <h2>{cocktailData.name}</h2>
             <img src={cocktailData.image} alt="cocktail" />

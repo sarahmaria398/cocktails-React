@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./CocktailCard.css";
 
 function CocktailCard(props) {
     const { cocktailData } = props;
+    const { id } = useParams;
+
+
     return (
         <div className="cocktail-card">
             <Link to={`/cocktails/${cocktailData.id}`}>
