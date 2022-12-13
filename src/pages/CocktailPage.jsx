@@ -1,24 +1,37 @@
-import React from "react";
-import { oneCocktail } from "../data"
+import React, { useState, useEffect } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+
 
 function CocktailPage() {
+    const [cocktailData, updateCocktailData] = useState({ ingredients: [] });
+    const { id } = useParams();
+
+    useEffect(() => {
+        fetch(`/cocktails/${id}`)
+            .then((results) => { return results.json(); })
+            .then((data) => { updateCocktailData(data) })
+    }, []);
+
     return (
         <div id="cocktail-page">
-            <h2>{oneCocktail.name}</h2>
-            <img src={oneCocktail.image} alt="cocktail" />
-            <h3>{oneCocktail.instructions}</h3>
+            <h2>{cocktailData.name}</h2>
+            <img src={cocktailData.image} alt="cocktail" />
+            <h3>{cocktailData.instructions}</h3>
 
             <h3>Ingredients:</h3>
 
-            {oneCocktail.ingredients.map((ingredientData, key) => {
+            {cocktailData.ingredients.map((ingredientData, key) => {
                 return (
-                    <li>
+                    <ul>
                         {ingredientData.name}
-                    </li>
+                        <img src={ingredientData.image} />
+                    </ul>
                 );
             })}
-            <h4>Glass: {oneCocktail.glass}</h4>
-            <h4>Category: {oneCocktail.category}</h4>
+            <h4>Glass: {cocktailData.glass}</h4>
+            <h4>Category: {cocktailData.category}</h4>
+            <h4>Alcoholic: {cocktailData.is_alcoholic}</h4>
+            <h4>Popular: {cocktailData.is_popular}</h4>
         </div>
     );
 
