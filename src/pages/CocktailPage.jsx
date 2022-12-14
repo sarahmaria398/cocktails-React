@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 
 function CocktailPage() {
@@ -13,27 +13,31 @@ function CocktailPage() {
     }, []);
 
     return (
+        <div>
+            <div id="cocktail-page">
+                <h2>{cocktailData.name}</h2>
+                <img src={cocktailData.image} alt="cocktail" />
+                <h3>{cocktailData.instructions}</h3>
 
+                <h3>Ingredients:</h3>
 
-        <div id="cocktail-page">
-            <h2>{cocktailData.name}</h2>
-            <img src={cocktailData.image} alt="cocktail" />
-            <h3>{cocktailData.instructions}</h3>
+                {cocktailData.ingredients.map((ingredientData, key) => {
+                    return (
+                        <ul>
+                            {ingredientData.name}
+                            <img src={ingredientData.image} />
+                        </ul>
+                    );
+                })}
+                <h4>Glass: {cocktailData.glass}</h4>
+                <h4>Category: {cocktailData.category}</h4>
+                <h4>Alcoholic: {cocktailData.is_alcoholic}</h4>
+                <h4>Popular: {cocktailData.is_popular}</h4>
+            </div>
 
-            <h3>Ingredients:</h3>
-
-            {cocktailData.ingredients.map((ingredientData, key) => {
-                return (
-                    <ul>
-                        {ingredientData.name}
-                        <img src={ingredientData.image} />
-                    </ul>
-                );
-            })}
-            <h4>Glass: {cocktailData.glass}</h4>
-            <h4>Category: {cocktailData.category}</h4>
-            <h4>Alcoholic: {cocktailData.is_alcoholic}</h4>
-            <h4>Popular: {cocktailData.is_popular}</h4>
+            <div >
+                <Link className="button" to="/">View More Cocktails</Link>
+            </div>
         </div>
     );
 
