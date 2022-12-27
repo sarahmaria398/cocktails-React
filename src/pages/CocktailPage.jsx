@@ -20,16 +20,20 @@ function CocktailPage() {
                 <h3>{cocktailData.instructions}</h3>
 
 
-                <h3>Ingredients:</h3>
+                {cocktailData.ingredients[0] ?
+                    <div>
+                        <h3>Ingredients:</h3>
 
-                {cocktailData.ingredients.map((ingredientData, key) => {
-                    return (
-                        <ul>
-                            {ingredientData.name}
-                            <img src={ingredientData.image} />
-                        </ul>
-                    );
-                })}
+                        {cocktailData.ingredients.map((ingredientData, key) => {
+                            return (
+                                <ul>
+                                    {ingredientData.name}
+                                    <img src={ingredientData.image} />
+                                </ul>
+                            );
+                        })}
+                    </div>
+                    : 'No Ingredients added yet.'}
 
 
                 <h4>Glass: {cocktailData.glass}</h4>
