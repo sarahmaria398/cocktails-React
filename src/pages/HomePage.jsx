@@ -51,8 +51,9 @@ function HomePage() {
                 </div>
             </div>
 
-            <div id='cocktails' className="cocktail-list" >
-                <h1>All Cocktails</h1>
+            <h1>All Cocktails</h1>
+            <div id="cocktail-list" >
+
                 {
                     cocktailData.map((cocktail, key) => {
                         return <CocktailCard key={key} cocktailData={cocktail} />;
@@ -60,8 +61,9 @@ function HomePage() {
                 }
             </div >
 
-            <div id='cocktails' className="cocktail-list" >
-                <h1>Popular Cocktails</h1>
+            <h1>Popular Cocktails</h1>
+            <div id="cocktail-list" >
+
                 {
                     popularData.map((cocktail, key) => {
                         return <CocktailCard key={key} cocktailData={cocktail} />;
@@ -69,8 +71,9 @@ function HomePage() {
                 }
             </div >
 
-            <div id='cocktails' className="cocktail-list" >
-                <h1>Latest Cocktails</h1>
+            <h1>Latest Cocktails</h1>
+            <div id="cocktail-list" >
+
                 {
                     latestData.map((cocktail, key) => {
                         return <CocktailCard key={key} cocktailData={cocktail} />;
@@ -86,6 +89,7 @@ function HomePage() {
                     })
                 }
             </div > */}
+            {/* TODO bug fix, server return null in position of index as previously deleted */}
 
         </div>
     )
