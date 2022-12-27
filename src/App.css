@@ -307,3 +307,12 @@ h3 {
 .button:hover {
   color: rgb(70, 106, 185);
 }
+
+#name-list {
+  position: relative;
+  display: inline-block;
+}
+
+/* #list {
+  justify-content: space-around;
+} */

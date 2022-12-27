@@ -19,6 +19,7 @@ function CocktailPage() {
                 <img src={cocktailData.image} alt="cocktail" />
                 <h3>{cocktailData.instructions}</h3>
 
+
                 <h3>Ingredients:</h3>
 
                 {cocktailData.ingredients.map((ingredientData, key) => {
@@ -29,6 +30,8 @@ function CocktailPage() {
                         </ul>
                     );
                 })}
+
+
                 <h4>Glass: {cocktailData.glass}</h4>
                 <h4>Category: {cocktailData.category}</h4>
                 <h4>Alcoholic: {cocktailData.is_alcoholic}</h4>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CocktailCard from "../components/CocktailCard";
-import { allCocktails } from "../data";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import BrowsePage from "./BrowsePage";
 
 
 function HomePage() {
@@ -9,6 +10,8 @@ function HomePage() {
     const [popularData, updatePopularData] = useState([{ ingredients: [] }])
     const [latestData, updateLatestData] = useState([{ ingredients: [] }])
     // const [randomData, updateRandomData] = useState([{ ingredients: [] }])
+    const letterData = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M']
+    const M = 'M'
 
 
     useEffect(() => {
@@ -90,6 +93,22 @@ function HomePage() {
                 }
             </div > */}
             {/* TODO bug fix, server return null in position of index as previously deleted */}
+
+            <h1>Browse by Name</h1>
+            <div id="name-list" >
+                {/* {
+                    letterData.map((letter, key) => {
+                        return <Link to={`/cocktails/by_letter/${letter}`} key={key} letterData={letter} > {letter}</Link>
+                        TODO so far the top works better, though unable to pass through the letter to the BrowsePage, as the url on the console shows either object
+                        or undefined.
+                        
+                        // return <BrowsePage key={key} letterData={letter} to={`/cocktails/by_letter/${letter}`}> {letter}</BrowsePage>
+                    })
+                } */}
+
+                <li><a href="/cocktails/by_letter/M" letter={M}>M</a></li>
+                {/* undefined url path: has object for letter */}
+            </div>
 
         </div>
     )

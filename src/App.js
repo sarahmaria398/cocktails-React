@@ -4,6 +4,7 @@ import Nav from "./components/Nav"
 import HomePage from "./pages/HomePage";
 import CocktailPage from "./pages/CocktailPage";
 import Footer from "./components/Footer";
+import BrowsePage from "./pages/BrowsePage";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes >
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/cocktails/:id" element={<CocktailPage />} />
+          <Route exact path="/cocktails/by_letter/:str" element={<BrowsePage />} />
         </Routes>
       </div>
       <Footer />
