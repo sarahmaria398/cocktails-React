@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import IngredientCard from "../components/IngredientCard";
 
 
 function CocktailPage() {
@@ -24,12 +25,9 @@ function CocktailPage() {
                     <div>
                         <h3>Ingredients:</h3>
 
-                        {cocktailData.ingredients.map((ingredientData, key) => {
+                        {cocktailData.ingredients.map((ingredient, key) => {
                             return (
-                                <ul>
-                                    {ingredientData.name}
-                                    <img src={ingredientData.image} />
-                                </ul>
+                                <IngredientCard key={key} ingredientData={ingredient} />
                             );
                         })}
                     </div>

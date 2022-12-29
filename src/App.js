@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import CocktailPage from "./pages/CocktailPage";
 import Footer from "./components/Footer";
 import BrowsePage from "./pages/BrowsePage";
+import IngredientPage from "./pages/IngredientPage";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/cocktails/:id" element={<CocktailPage />} />
           <Route exact path="/cocktails/by_letter/:str" element={<BrowsePage />} />
+          <Route exact path="/ingredients/:id" element={<IngredientPage />} />
         </Routes>
       </div>
       <Footer />
