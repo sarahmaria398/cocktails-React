@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import CocktailCard from "../components/CocktailCard";
 
 
 function IngredientPage() {
     const [ingredientData, updateIngredientData] = useState({ name: '' });
+    const [cocktailData, updateCocktailData] = useState([]);
+
     const { id } = useParams();
 
     useEffect(() => {
@@ -12,6 +15,12 @@ function IngredientPage() {
             .then((data) => { updateIngredientData(data) })
     }, []);
 
+    useEffect(() => {
+        fetch(`/cocktails/search/${ingredientData.name}`)
+            .then((results) => { return results.json(); })
+            .then((data) => { updateCocktailData(data) })
+    }, [ingredientData]);
+
     return (
         <div>
             <div id="ingredient-page">
@@ -19,6 +28,16 @@ function IngredientPage() {
                 <img src={ingredientData.image} alt="ingredient" />
                 <h3>{ingredientData.instructions}</h3>
             </div>
+
+            <div id="cocktail-list" >
+                <h1>Cocktails with this Ingredient</h1>
+
+                {
+                    cocktailData.map((cocktail, key) => {
+                        return <CocktailCard key={key} cocktailData={cocktail} />;
+                    })
+                }
+            </div >
 
             <div >
                 <Link className="button" to="/">View More Cocktails</Link>

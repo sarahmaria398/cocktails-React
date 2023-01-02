@@ -9,8 +9,8 @@ function HomePage() {
     const [cocktailData, updateCocktailData] = useState([{ ingredients: [] }])
     const [popularData, updatePopularData] = useState([{ ingredients: [] }])
     const [latestData, updateLatestData] = useState([{ ingredients: [] }])
-    // const [randomData, updateRandomData] = useState([{ ingredients: [] }])
-    const letterData = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M']
+    const [randomData, updateRandomData] = useState('')
+    // const letterData = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M']
     const M = 'M'
 
 
@@ -27,22 +27,18 @@ function HomePage() {
 
         fetch(`/latest`)
             .then(res => res.json())
-            .then(data => { updateLatestData(data); })
+            .then(data => { updateLatestData(data); console.log(latestData) })
             .catch(error => console.log)
 
     }, [])
-    // useEffect(() => {
-    //     fetch(`/random`)
-    //         .then(res => {
-    //             if (res.ok) { console.log("HTTP request successful") }
-    //             else { console.log("HTTP request unsuccessful") }
-    //             return res
-    //         })
-    //         .then(res => res.json())
-    //         .then(data => { updateRandomData(data); })
-    //         .catch(error => console.log)
 
-    // }, [cocktailData])
+    useEffect(() => {
+        fetch(`/random`)
+            .then(res => res.json())
+            .then(data => { updateRandomData(data); console.log(randomData) })
+            .catch(error => console.log)
+
+    }, [cocktailData])
 
     return (
         <div>
@@ -74,6 +70,8 @@ function HomePage() {
                 }
             </div >
 
+            <h1>Random Ingredients here</h1>
+
             <h1>Latest Cocktails</h1>
             <div id="cocktail-list" >
 
@@ -83,18 +81,16 @@ function HomePage() {
                     })
                 }
             </div >
+            <h1>Random Ingredients here</h1>
 
-            {/* <div id='cocktails' className="cocktail-list" >
-                <h1>Random Cocktail of the Day</h1>
-                {
-                    randomData.map((cocktail, key) => {
-                        return <CocktailCard key={key} cocktailData={cocktail} />;
-                    })
-                }
-            </div > */}
-            {/* TODO bug fix, server return null in position of index as previously deleted */}
+            <h1>Random Cocktails here</h1>
 
-            <h1>Browse by Name</h1>
+            <h1>Random Cocktail of the Day</h1>
+            <div id="cocktail-list" >
+                <CocktailCard key={randomData.id} cocktailData={randomData} />
+            </div >
+
+            <h1>Browse by Name here</h1>
             <div id="name-list" >
                 {/* {
                     letterData.map((letter, key) => {
